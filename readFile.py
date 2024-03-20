@@ -33,27 +33,6 @@ for line in file:
   grbl_out = s.readline()  # Wait for grbl response with carriage return
   print(' : ' + grbl_out.strip())
 
-'''
-for line in file:
-  print('{} on row {}'.format(line, rowCounter))
-  rowCounter = rowCounter + 1
-  if line.startswith('G'):
-    thisLine = "{}\n".format(line)
-    s.write(str(thisLine).encode())
-
-    grbl_out = s.readline()  # Wait for grbl response with carriage return
-    print(' : ' + grbl_out.strip())
-
-    if counter > 1000:
-      break
-
-    if "Penetrate" in line:
-      time.sleep(0.5)
-    else:
-      time.sleep(0.02)
-
-    counter = counter + 1
-'''
 
 print("closing")
 
