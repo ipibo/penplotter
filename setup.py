@@ -21,8 +21,8 @@ def resetSequence():
   toPlotter('z5')
   time.sleep(2)
 
-  # toPlotter('z0f1000')
-  # time.sleep(1)
+  toPlotter('z0f1000')
+  time.sleep(1)
 
   toPlotter('$1=0')
   time.sleep(1)
