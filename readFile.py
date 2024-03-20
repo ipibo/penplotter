@@ -3,7 +3,7 @@ import time
 import random
 import math
 
-file = open("third.gcode", "r")
+file = open("test.gcode", "r")
 # file = open("card.ngc", "r")
 # file = open("square.ngc", "r")
 
