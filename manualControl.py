@@ -6,6 +6,8 @@ def on_key_press(event):
   print(event.name)
     # print(f"You pressed {event.name}")
 
+def setSpeed(speed):
+  toPlotter("f{0}".format(speed))
 
 def print_user_input():
   while True:
@@ -13,8 +15,8 @@ def print_user_input():
     print(xCoord)
     yCoord = input("enter a y coordinate:")
     print(yCoord)
-    speed = input("enter a speed:")
-    print(speed)
+    # speed = input("enter a speed:")
+    # print(speed)
     coord = "x{0}y{1}f{2}\n".format(xCoord, yCoord, speed)
     coord = str(coord)
     toPlotter(coord)
@@ -22,6 +24,12 @@ def print_user_input():
   
 
 
+# ask user for speed
+speed = input("enter a speed:")
+
+setSpeed(speed)
+
 
 print_user_input()
+
 
