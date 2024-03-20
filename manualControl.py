@@ -2,9 +2,17 @@ from setup import resetSequence
 from setup import resetSequence
 import keyboard
 
-resetSequence()
+# resetSequence()
 
-input()
+def on_key_press(event):
+  print(event.name)
+    # print(f"You pressed {event.name}")
+
+keyboard.add_hotkey('ctrl+alt+a', on_key_press)
+keyboard.wait()
+
+# input()
+
 
 # while True:
 #   try:
