@@ -16,7 +16,7 @@ s.write(str('z5\n').encode())
 
 time.sleep(2)
 
-counter = 0
+counter = 10
 
 print("start moving")
 
