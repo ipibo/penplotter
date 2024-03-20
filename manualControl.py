@@ -8,7 +8,7 @@ def on_key_press(event):
   print(event.name)
     # print(f"You pressed {event.name}")
 
-keyboard.add_hotkey('ctrl+alt+a', on_key_press)
+# keyboard.add_hotkey('ctrl+alt+a', on_key_press)
 keyboard.wait()
 
 # input()
