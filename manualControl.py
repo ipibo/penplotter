@@ -1,6 +1,6 @@
 from setup import resetSequence
 from setup import toPlotter
-# resetSequence()
+resetSequence()
 
 def on_key_press(event):
   print(event.name)
@@ -19,7 +19,7 @@ def print_user_input():
   coord = str(coord)
   toPlotter(coord)
   print(coord)
-  
+
   
 
 
