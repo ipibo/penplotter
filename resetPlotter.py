@@ -16,11 +16,11 @@ s.write(str('z5\n').encode())
 
 time.sleep(2)
 
-counter = 10
+counter = 0
 
 print("start moving")
 
-while counter < 1:
+while counter < 10:
   #while True:
   randomX = random.random() * 50
   randomY = random.random() * 200
