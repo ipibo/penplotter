@@ -41,9 +41,9 @@ print("start moving")
 #   print(counter)
 
 
-s.write(str('z0f1000\n').encode())
+toPlotter('z0f1000')
 time.sleep(5)
-s.write(str('$1=0\n').encode())
+toPlotter('$1=0')
 time.sleep(2)
-s.write(str('x10y10\n').encode())
+toPlotter('x10y10')
 s.close()
