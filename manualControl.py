@@ -1,7 +1,7 @@
-# from setup import resetSequence
+from setup import resetSequence
 from setup import toPlotter
-# resetSequence()
-toPlotter('$h')
+resetSequence()
+
 
 def on_key_press(event):
   print(event.name)
