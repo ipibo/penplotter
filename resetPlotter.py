@@ -30,8 +30,8 @@ def resetSequence():
   toPlotter('x10y10')
 
 
-print("start moving")
-resetSequence()
+
+# resetSequence()
 
 # while counter < 10:
 #   #while True:
@@ -48,4 +48,4 @@ resetSequence()
 
 
 
-s.close()
+# s.close()
