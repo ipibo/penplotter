@@ -16,10 +16,10 @@ def resetSequence():
   toPlotter('$1=255')
   time.sleep(1)
 
-  # toPlotter('G92x0y0')
-  # toPlotter('g1f1000')
-  # toPlotter('z5')
-  # time.sleep(2)
+  toPlotter('G92x0y0')
+  toPlotter('g1f1000')
+  toPlotter('z5')
+  time.sleep(2)
 
   # toPlotter('z0f1000')
   # time.sleep(1)
