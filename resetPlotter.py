@@ -19,7 +19,7 @@ time.sleep(2)
 counter = 0
 
 print("start moving")
-'''
+
 while counter < 1:
   #while True:
   randomX = random.random() * 50
@@ -32,7 +32,7 @@ while counter < 1:
 
   counter = counter + 1
   print(counter)
-'''
+
 
 s.write(str('z0f1000\n').encode())
 time.sleep(5)
