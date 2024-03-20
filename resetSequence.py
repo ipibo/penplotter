@@ -28,24 +28,3 @@ def resetSequence():
   time.sleep(1)
 
   toPlotter('x10y10')
-
-
-print("start moving")
-resetSequence()
-
-# while counter < 10:
-#   #while True:
-#   randomX = random.random() * 50
-#   randomY = random.random() * 200
-#   randomSpeed = (random.random() * 1000) + 100
-#   coord = "x{0}y{1}f5000\n".format(randomX, randomY)
-#   coord = str(coord)
-#   s.write(coord.encode())
-#   time.sleep(3)
-
-#   counter = counter + 1
-#   print(counter)
-
-
-
-s.close()
