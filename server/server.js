@@ -1,5 +1,7 @@
 const http = require("http")
 const { exec } = require("child_process")
+const fs = require("fs")
+const path = require("path")
 
 const server = http.createServer((req, res) => {
   if (req.url === "/run-script") {
@@ -20,8 +22,17 @@ const server = http.createServer((req, res) => {
     )
   } else {
     res.statusCode = 200
-    res.setHeader("Content-Type", "text/plain")
-    res.end("Hello, world!")
+    const filePath = path.join(__dirname, "index.html")
+    fs.readFile(filePath, (error, content) => {
+      if (error) {
+        console.error(`Error reading file: ${error}`)
+        res.statusCode = 500
+        res.end("Internal s Error")
+      } else {
+        res.setHeader("Content-Type", "text/html")
+        res.end(content)
+      }
+    })
   }
 })
 
