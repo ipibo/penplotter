@@ -4,8 +4,6 @@ import random
 import math
 
 file = open("/home/pi/Desktop/penplotter/plotting/test.gcode", "r")
-# file = open("card.ngc", "r")
-# file = open("square.ngc", "r")
 
 s = serial.Serial('/dev/ttyUSB0', 115200)
 
