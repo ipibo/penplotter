@@ -20,6 +20,21 @@ const server = http.createServer((req, res) => {
         }
       }
     )
+  } else if (req.url === "/read-file") {
+    exec(
+      "python /home/pi/Desktop/penplotter/plotting/readFile.py",
+      (error, stdout, stderr) => {
+        if (error) {
+          console.error(`Error executing script: ${error}`)
+          res.statusCode = 500
+          res.end("Internal Server Error")
+        } else {
+          console.log(`Script output: ${stdout}`)
+          res.statusCode = 200
+          res.end("Script executed successfully")
+        }
+      }
+    )
   } else {
     res.statusCode = 200
     const filePath = path.join(__dirname, "index.html")

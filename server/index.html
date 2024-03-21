@@ -10,9 +10,22 @@
 <body>
   <button onclick="requestScript()">reset plotter</button>
 
+
+  <button onclick="readFileAndDraw()">read file and draw </button>
+
+
+
+
   <script>
     function requestScript() {
       fetch('/run-script')
+        .then(response => response.text())
+        .then(data => console.log(data))
+        .catch(error => console.error(error));
+    }
+
+    function readFileAndDraw() {
+      fetch('/read-file')
         .then(response => response.text())
         .then(data => console.log(data))
         .catch(error => console.error(error));
