@@ -3,7 +3,7 @@ import time
 import random
 import math
 
-file = open("test.gcode", "r")
+file = open("/home/pi/Desktop/penplotter/plotting/test.gcode", "r")
 # file = open("card.ngc", "r")
 # file = open("square.ngc", "r")
 
