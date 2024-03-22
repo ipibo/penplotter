@@ -29,8 +29,9 @@ for line in file:
   l = line.strip()  # Strip all EOL characters for consistency
   print('Sending: ' + l)
   s.write(l + '\n')  # Send g-code block to grbl
+  s.write((l + '\n').encode('utf-8'))  # Send g-code block to grbl
   grbl_out = s.readline()  # Wait for grbl response with carriage return
-  print(' : ' + grbl_out.strip())
+  # print(' : ' + grbl_out.strip())
 
 
 print("closing")

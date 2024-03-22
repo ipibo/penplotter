@@ -23,7 +23,7 @@ const server = http.createServer((req, res) => {
   } else if (req.url === "/read-file") {
     // execute the Python script for the read file
     exec(
-      "python /home/pi/Desktop/penplotter/plotting/readFile.py",
+      "python /home/pi/penplotter/plotting/readFile.py",
       (error, stdout, stderr) => {
         if (error) {
           console.error(`Error executing script: ${error}`)
