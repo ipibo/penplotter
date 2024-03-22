@@ -30,6 +30,22 @@ app.post("/upload", upload.single("file"), (req, res) => {
     }
   )
 
+  exec(
+    "python /home/pi/penplotter/plotting/readFile.py",
+    (error, stdout, stderr) => {
+      if (error) {
+        console.error(`Error executing script: ${error}`)
+
+        res.statusCode = 500
+        res.end("Internal Server Error")
+      } else {
+        console.log(`Script output: ${stdout}`)
+        res.statusCode = 200
+        res.end("Script executed successfully")
+      }
+    }
+  )
+
   res.redirect("/")
 })
 
