@@ -2,19 +2,101 @@
 <html lang="en">
 
 <head>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+
 </head>
 
+<style>
+  :root {
+    --blur: 10px;
+    --english-violet: #413c58ff;
+    --ash-gray: #a3c4bcff;
+    --tea-green: #bfd7b5ff;
+    --cream: #e7efc5ff;
+    --parchment: #f2e7c9ff;
+  }
+
+  /* CSS HEX */
+  body {
+    background: var(--ash-gray);
+  }
+
+  .test {
+    background: var(--tea-green);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 50px;
+    font-size: 20px;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    /* Added this line */
+    min-height: 600px;
+    |
+  }
+
+  button {
+    min-width: 500px;
+    max-width: 500px;
+    background-color: var(--parchment);
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+    margin-bottom: 10px;
+    min-height: 30px;
+    font-family: sans-serif;
+    font-size: 50px;
+
+  }
+
+  button:hover {
+    background-color: var(--cream);
+    cursor: pointer;
+  }
+
+  input[type="file"] {
+    margin-top: 20px;
+
+    min-height: 50px;
+    font-size: 16px;
+    padding: 5px;
+    /* border: 1px solid var(--english-violet); */
+    border-radius: 5px;
+
+    background-color: var(--cream);
+    min-width: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+</style>
+
+
 <body>
-  <button onclick="requestScript()">reset plotter</button>
+
+  <div class="test">
+
+    <button onclick="requestScript()">Reset plotter</button>
+    <button onclick="readFileAndDraw()">Draw last file </button>
+    <!-- <input type="file" name="file"> -->
+    <!-- <input type="file" name="file" onchange="uploadFile(event)"> -->
+    <!-- <button onclick="uploadFile(event)">Upload file</button> -->
 
 
-  <button onclick="readFileAndDraw()">read file and draw </button>
+    <form action="/upload_file">
+      <input type="file" id="myFile" name="filename">
+      <input type="submit">
+    </form>
 
-
-
+  </div>
 
   <script>
     function requestScript() {
@@ -26,6 +108,20 @@
 
     function readFileAndDraw() {
       fetch('/read-file')
+        .then(response => response.text())
+        .then(data => console.log(data))
+        .catch(error => console.error(error));
+    }
+
+    function uploadFile(file) {
+      console.log(file)
+      const formData = new FormData();
+      formData.append('file', file.target.files[0]);
+
+      fetch('/upload-file', {
+          method: 'POST',
+          body: formData
+        })
         .then(response => response.text())
         .then(data => console.log(data))
         .catch(error => console.error(error));
