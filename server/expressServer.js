@@ -15,7 +15,7 @@ app.post("/upload", upload.single("file"), (req, res) => {
   // Redirect the user back to the page
   console.log(req.file.path)
   exec(
-    "python /home/pi/svg2gcode_grbl/convert.py /home/pi/out.gcode",
+    `python /home/pi/svg2gcode_grbl/convert.py ${req.file.path} /home/pi/out.gcode`,
     (error, stdout, stderr) => {
       if (error) {
         console.error(`Error executing script: ${error}`)
