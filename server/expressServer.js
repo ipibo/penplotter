@@ -11,6 +11,22 @@ app.post("/upload", upload.single("file"), (req, res) => {
   // res.json({ message: "File uploaded successfully!" })
   // Redirect the user back to the page
   console.log(req.file.path)
+  exec(
+    "python /home/pi/svg2gcode_grbl/convert.py  /home/pi/out.gcode",
+    (error, stdout, stderr) => {
+      if (error) {
+        console.error(`Error executing script: ${error}`)
+
+        res.statusCode = 500
+        res.end("Internal Server Error")
+      } else {
+        console.log(`Script output: ${stdout}`)
+        res.statusCode = 200
+        res.end("Script executed successfully")
+      }
+    }
+  )
+
   res.redirect("/")
 })
 
