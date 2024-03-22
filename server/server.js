@@ -7,7 +7,7 @@ const server = http.createServer((req, res) => {
   if (req.url === "/run-script") {
     // Execute the Python script
     exec(
-      "python /home/pi/Desktop/penplotter/plotting/manualControl.py",
+      "python /home/pi/penplotter/plotting/manualControl.py",
       (error, stdout, stderr) => {
         if (error) {
           console.error(`Error executing script: ${error}`)
