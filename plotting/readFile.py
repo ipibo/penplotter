@@ -4,8 +4,9 @@ import random
 import math
 
 #file = open("/home/pi/Desktop/penplotter/plotting/test.gcode", "r")
-file = open("test.gcode", "r")
+# file = open("test.gcode", "r")
 
+file = open("/home/pi/out.gcode", "r")
 s = serial.Serial('/dev/ttyUSB0', 115200)
 
 s.write("\r\n\r\n".encode())
