@@ -91,9 +91,9 @@
     <!-- <button onclick="uploadFile(event)">Upload file</button> -->
 
 
-    <form action="/upload_file">
-      <input type="file" id="myFile" name="filename">
-      <input type="submit">
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+      <input type="file" name="file" required>
+      <button type="submit">Upload</button>
     </form>
 
   </div>

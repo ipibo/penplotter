@@ -3,7 +3,8 @@ import time
 import random
 import math
 
-file = open("/home/pi/Desktop/penplotter/plotting/test.gcode", "r")
+#file = open("/home/pi/Desktop/penplotter/plotting/test.gcode", "r")
+file = open("test.gcode", "r")
 
 s = serial.Serial('/dev/ttyUSB0', 115200)
 
