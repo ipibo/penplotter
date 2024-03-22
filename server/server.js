@@ -21,11 +21,13 @@ const server = http.createServer((req, res) => {
       }
     )
   } else if (req.url === "/read-file") {
+    // execute the Python script for the read file
     exec(
       "python /home/pi/Desktop/penplotter/plotting/readFile.py",
       (error, stdout, stderr) => {
         if (error) {
           console.error(`Error executing script: ${error}`)
+
           res.statusCode = 500
           res.end("Internal Server Error")
         } else {
@@ -35,6 +37,8 @@ const server = http.createServer((req, res) => {
         }
       }
     )
+  } else if (req.url === "/upload_file") {
+    console.log(req)
   } else {
     res.statusCode = 200
     const filePath = path.join(__dirname, "index.html")
