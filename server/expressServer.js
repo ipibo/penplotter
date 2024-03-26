@@ -19,7 +19,6 @@ app.post("/upload", upload.single("file"), (req, res) => {
     (error, stdout, stderr) => {
       if (error) {
         console.error(`Error executing script: ${error}`)
-
         res.statusCode = 500
         res.end("Internal Server Error")
       } else {
@@ -47,6 +46,23 @@ app.post("/upload", upload.single("file"), (req, res) => {
   )
 
   res.redirect("/")
+})
+
+app.post("/run-script", (req, res) => {
+  exec(
+    "python /home/pi/penplotter/plotting/manualControl.py",
+    (error, stdout, stderr) => {
+      if (error) {
+        console.error(`Error executing script: ${error}`)
+        res.statusCode = 500
+        res.end("Internal Server Error")
+      } else {
+        console.log(`Script output: ${stdout}`)
+        res.statusCode = 200
+        res.end("Script executed successfully")
+      }
+    }
+  )
 })
 
 app.listen(port, () => {
