@@ -5,8 +5,21 @@ const { exec } = require("child_process")
 const fs = require("fs")
 const path = require("path")
 
+const SerialPort = require("serialport")
+
 // Require the upload middleware
 const upload = require("./upload")
+
+app.use(express.urlencoded({ extended: true }))
+app.use(express.json())
+
+const serialPort = new SerialPort("/dev/ttyUSB0", {
+  baudRate: 115200,
+})
+
+serialPort.on("open", function () {
+  console.log("serialPort Opened")
+})
 
 // Set up a route for file uploads
 app.post("/upload", upload.single("file"), (req, res) => {
@@ -19,36 +32,6 @@ app.post("/upload", upload.single("file"), (req, res) => {
     `python /home/pi/svg2gcode_grbl/convert.py /home/pi/penplotter/server/${req.file.path} /home/pi/out.gcode`,
     "python /home/pi/penplotter/plotting/readFile.py"
   )
-  // exec(
-  //   `python /home/pi/svg2gcode_grbl/convert.py /home/pi/penplotter/server/${req.file.path} /home/pi/out.gcode`,
-  //   (error, stdout, stderr) => {
-  //     if (error) {
-  //       console.error(`Error executing script: ${error}`)
-  //       res.statusCode = 500
-  //       res.end("Internal Server Error")
-  //     } else {
-  //       console.log(`Script output: ${stdout}`)
-  //       res.statusCode = 200
-  //       res.end("Script executed successfully")
-
-  //       exec(
-  //         "python /home/pi/penplotter/plotting/readFile.py",
-  //         (error, stdout, stderr) => {
-  //           if (error) {
-  //             console.error(`Error executing script: ${error}`)
-
-  //             res.statusCode = 500
-  //             res.end("Internal Server Error")
-  //           } else {
-  //             console.log(`Script output: ${stdout}`)
-  //             res.statusCode = 200
-  //             res.end("Script executed successfully")
-  //           }
-  //         }
-  //       )
-  //     }
-  //   }
-  // )
 
   res.redirect("/")
 })
@@ -65,6 +48,20 @@ app.get("/read-file", (req, res) => {
   excecuteSimplePythonCommand(
     "python /home/pi/penplotter/plotting/read-file.py"
   )
+})
+
+app.post("/to-serial", (req, res) => {
+  const text = req.body.inputText // Access the text from the form input
+  console.log("Received text:", text) // Log the received text
+
+  serialPort.write(text, function (err) {
+    if (err) {
+      return console.log("Error on write: ", err.message)
+    }
+    console.log("message written")
+  })
+
+  res.redirect("/")
 })
 
 app.listen(port, () => {
