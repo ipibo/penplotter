@@ -48,7 +48,7 @@ app.post("/upload", upload.single("file"), (req, res) => {
   res.redirect("/")
 })
 
-app.post("/reset-plotter", (req, res) => {
+app.get("/reset-plotter", (req, res) => {
   console.log("reset plotter")
   exec(
     "python /home/pi/penplotter/plotting/resetPlotterScript.py",
