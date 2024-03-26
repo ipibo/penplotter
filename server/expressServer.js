@@ -5,7 +5,7 @@ const { exec } = require("child_process")
 const fs = require("fs")
 const path = require("path")
 
-const SerialPort = require("serialport")
+const { SerialPort } = require("serialport")
 
 // Require the upload middleware
 const upload = require("./upload")
@@ -13,11 +13,13 @@ const upload = require("./upload")
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
-const serialPort = new SerialPort("/dev/ttyUSB0", {
-  baudRate: 115200,
-})
+const serialport = new SerialPort({ path: "/dev/ttyUSB0", baudRate: 115200 })
+// const serialport = new SerialPort({
+//   path: "/dev/tty.Bluetooth-Incoming-Port",
+//   baudRate: 115200,
+// })
 
-serialPort.on("open", function () {
+serialport.on("open", function () {
   console.log("serialPort Opened")
 })
 
@@ -54,12 +56,12 @@ app.post("/to-serial", (req, res) => {
   const text = req.body.inputText // Access the text from the form input
   console.log("Received text:", text) // Log the received text
 
-  serialPort.write(text, function (err) {
-    if (err) {
-      return console.log("Error on write: ", err.message)
-    }
-    console.log("message written")
-  })
+  // s.write(text, function (err) {
+  //   if (err) {
+  //     return console.log("Error on write: ", err.message)
+  //   }
+  //   console.log("message written")
+  // })
 
   res.redirect("/")
 })
