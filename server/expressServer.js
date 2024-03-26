@@ -48,21 +48,18 @@ app.post("/upload", upload.single("file"), (req, res) => {
   res.redirect("/")
 })
 
+// this should be a get request ;)
 app.get("/reset-plotter", (req, res) => {
   console.log("reset plotter")
-  exec(
-    "python /home/pi/penplotter/plotting/resetPlotterScript.py",
-    (error, stdout, stderr) => {
-      if (error) {
-        console.error(`Error executing script: ${error}`)
-        res.statusCode = 500
-        res.end("Internal Server Error")
-      } else {
-        console.log(`Script output: ${stdout}`)
-        res.statusCode = 200
-        res.end("Script executed successfully")
-      }
-    }
+  excecuteSimplePythonCommand(
+    "python /home/pi/penplotter/plotting/resetPlotterScript.py"
+  )
+})
+app.get("/read-file", (req, res) => {
+  console.log("reset plotter")
+
+  excecuteSimplePythonCommand(
+    "python /home/pi/penplotter/plotting/read-file.py"
   )
 })
 
@@ -72,3 +69,17 @@ app.listen(port, () => {
 app.get("/", function (req, res) {
   res.sendFile(__dirname + "/index.html")
 })
+
+function excecuteSimplePythonCommand(command) {
+  exec(command, (error, stdout, stderr) => {
+    if (error) {
+      console.error(`Error executing script: ${error}`)
+      res.statusCode = 500
+      res.end("Internal Server Error")
+    } else {
+      console.log(`Script output: ${stdout}`)
+      res.statusCode = 200
+      res.end("Script executed successfully")
+    }
+  })
+}
