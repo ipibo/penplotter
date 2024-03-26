@@ -48,9 +48,10 @@ app.post("/upload", upload.single("file"), (req, res) => {
   res.redirect("/")
 })
 
-app.post("/run-script", (req, res) => {
+app.post("/reset-plotter", (req, res) => {
+  console.log("reset plotter")
   exec(
-    "python /home/pi/penplotter/plotting/manualControl.py",
+    "python /home/pi/penplotter/plotting/resetPlotterScript.py",
     (error, stdout, stderr) => {
       if (error) {
         console.error(`Error executing script: ${error}`)

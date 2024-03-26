@@ -84,7 +84,7 @@
 
   <div class="test">
 
-    <button onclick="requestScript()">Reset plotter</button>
+    <button onclick="resetPlotter()">Reset plotter</button>
     <button onclick="readFileAndDraw()">Draw last file </button>
     <!-- <input type="file" name="file"> -->
     <!-- <input type="file" name="file" onchange="uploadFile(event)"> -->
@@ -99,8 +99,8 @@
   </div>
 
   <script>
-    function requestScript() {
-      fetch('/run-script')
+    function resetPlotter() {
+      fetch('/reset-plotter')
         .then(response => response.text())
         .then(data => console.log(data))
         .catch(error => console.error(error));
