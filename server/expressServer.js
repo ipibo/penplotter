@@ -17,7 +17,6 @@ app.post("/upload", upload.single("file"), (req, res) => {
 
   excecuteSimplePythonCommand(
     `python /home/pi/svg2gcode_grbl/convert.py /home/pi/penplotter/server/${req.file.path} /home/pi/out.gcode`,
-    res,
     "python /home/pi/penplotter/plotting/readFile.py"
   )
   // exec(
@@ -58,15 +57,13 @@ app.post("/upload", upload.single("file"), (req, res) => {
 app.get("/reset-plotter", (req, res) => {
   console.log("reset plotter")
   excecuteSimplePythonCommand(
-    "python /home/pi/penplotter/plotting/resetPlotterScript.py",
-    res
+    "python /home/pi/penplotter/plotting/resetPlotterScript.py"
   )
 })
 app.get("/read-file", (req, res) => {
   console.log("reset plotter")
   excecuteSimplePythonCommand(
-    "python /home/pi/penplotter/plotting/read-file.py",
-    res
+    "python /home/pi/penplotter/plotting/read-file.py"
   )
 })
 
@@ -77,7 +74,7 @@ app.get("/", function (req, res) {
   res.sendFile(__dirname + "/index.html")
 })
 
-function excecuteSimplePythonCommand(command, res, nextCommand) {
+function excecuteSimplePythonCommand(command, nextCommand) {
   exec(command, (error, stdout, stderr) => {
     if (error) {
       console.error(`Error executing script: ${error}`)
