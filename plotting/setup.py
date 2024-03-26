@@ -26,6 +26,9 @@ def resetSequence():
 
   toPlotter('$1=0')
   time.sleep(1)
+  toPlotter('G21')
+  time.sleep(1)
+  
 
   toPlotter('x5y5')
 
