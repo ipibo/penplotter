@@ -56,12 +56,22 @@ app.post("/to-serial", (req, res) => {
   const text = req.body.inputText // Access the text from the form input
   console.log("Received text:", text) // Log the received text
 
-  serialport.write("$h", function (err) {
+  // s.write(str(command + '\n').encode())
+  const command = "$h"
+
+  serialport.write(`${command}\n`, function (err) {
     if (err) {
       return console.log("Error on write: ", err.message)
     }
     console.log("message written")
   })
+
+  // serialport.write("$h", function (err) {
+  //   if (err) {
+  //     return console.log("Error on write: ", err.message)
+  //   }
+  //   console.log("message written")
+  // })
 
   res.redirect("/")
 })
