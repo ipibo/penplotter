@@ -57,7 +57,7 @@ app.post("/to-serial", (req, res) => {
   console.log("Received text:", text) // Log the received text
 
   // s.write(str(command + '\n').encode())
-  const command = "$h"
+  const command = text
 
   serialport.write(`${command}\n`, function (err) {
     if (err) {
