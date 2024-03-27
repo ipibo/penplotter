@@ -16,8 +16,8 @@ def resetSequence():
   toPlotter('$1=255')
   time.sleep(1)
 
-  toPlotter('$100=78.5')
-  toPlotter('$101=78.5')
+  # toPlotter('$100=78.5')
+  # toPlotter('$101=78.5')
   time.sleep(1)
 
   toPlotter('G92x0y0')
@@ -37,23 +37,23 @@ def resetSequence():
   toPlotter('x5y5')
   time.sleep(1)
 
-  toPlotter('x10y5')
-  time.sleep(1)
+  # toPlotter('x10y5')
+  # time.sleep(1)
 
-  toPlotter('x10y10')
-  time.sleep(1)
+  # toPlotter('x10y10')
+  # time.sleep(1)
 
-  toPlotter('x5y10')
-  time.sleep(1)
+  # toPlotter('x5y10')
+  # time.sleep(1)
 
-  toPlotter('x5y5')
-  time.sleep(1)
+  # toPlotter('x5y5')
+  # time.sleep(1)
 
-  toPlotter('x0y0')
-  time.sleep(1)
+  # toPlotter('x0y0')
+  # time.sleep(1)
 
-  toPlotter('x0y100')
-  time.sleep(1)
+  # toPlotter('x0y100')
+  # time.sleep(1)
 
 
   
